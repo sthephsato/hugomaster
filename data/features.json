@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Weather",
+    "description": "Make sure you are prepared for the weather",
+    "image": "images/features/weather_icon.png",
+    "link": "/blogs/2019-12-29-machu-picchu-weather/"
+  },
+  {
+    "title": "Tickets",
+    "description": "What types of tickets can you buy and whats the right one for you.",
+    "image": "images/features/tickets_icon.png",
+    "link": "/tags/tickets/"
+  },
+  {
+    "title": "Getting There",
+    "description": "Details on Buses, Trains and by Foot",
+    "image": "images/features/getting_there_icon.png",
+    "link": "/tags/getting-there/"
+  }
+]
