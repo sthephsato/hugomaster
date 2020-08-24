@@ -1,0 +1,8 @@
+,
+
+{{ partial "search-teaser" (dict "context" . "searchtitle" "test" "searchurl" "jimbeans")  }}
+
+
+      item:'<a href =\"{{ safeHTML "{{{ permalink }}}" }} \"> {{ safeHTML "{{{ _highlightResult.title.value }}}" }}</a>'
+
+<!---      item:'' -->

@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header">
+    Top Questions
+  </div>
+  <div class="card-body">
+    <ul>
+    {{ $questions := where (where .Site.RegularPages "Type" "questions") ".Params.featured" true }}
+
+    {{ range first 5 (sort $questions ".Params.weight") }}
+
+      {{ partial "teaser-question-title" (dict "context" . "questions" $questions)}}
+
+    {{ end }}
+    </ul>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

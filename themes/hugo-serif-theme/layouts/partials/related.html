@@ -1,0 +1,11 @@
+
+<h2>We think you might also like:</h2>
+<div class="row justify-content-start">
+
+	{{ $related := .Site.RegularPages.Related . | first 5 }}
+	{{ with $related }}
+
+	  {{ range . }}
+	      {{ partial "teaser.html" (dict "context" . "related" $related)  }}
+	  {{ end }}
+	{{ end }}

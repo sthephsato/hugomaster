@@ -1,0 +1,24 @@
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  .wrapper {
+    flex: 1 0 0;
+  }
+}
+
+.in_content_related{
+  border-top :1px solid grey;
+  border-bottom :1px solid #333;
+  padding:5px;
+  margin:3px;
+  a{
+    text-decoration:none !important;
+    font-weight:bold;
+    color:#333;
+    &:hover{
+      text-decoration:underline !important;
+    }
+
+  }
+}

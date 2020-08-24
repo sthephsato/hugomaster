@@ -1,0 +1,20 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-questions-list{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "main" }}
+
+<div class="container pt-6 pb-md-12">
+  <div class="row">
+    {{ partial "question-form" }}
+  </div>
+  <div class="row">
+    {{ $questions := where .Site.RegularPages "Type" "questions" }}
+    {{ range (sort $questions ".Params.weight") }}
+
+      {{ partial "teaser-question" (dict "context" . "questions" $questions)}}
+
+    {{ end }}
+  </div>
+</div>
+{{ end }}

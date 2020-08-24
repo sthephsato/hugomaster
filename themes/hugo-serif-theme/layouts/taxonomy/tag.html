@@ -1,0 +1,35 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-tags-list{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "meta_tags" }}
+<meta name="description" content="Get Informtion on Machu Picchu {{ humanize .Title }}" />
+<meta property="og:title" content="Machu Picchu information on {{ humanize .Title }}" />
+<meta property="og:type" content="{{ .Site.Params.homepage_meta_tags.meta_og_type }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:image" content="{{ .Site.Params.homepage_meta_tags.meta_og_image }}" />
+<meta property="og:description" content="Get Informtion on Machu Picchu {{ humanize .Title }}" />
+<meta name="twitter:card" content="{{ .Content | truncate 120 }}" />
+<meta name="twitter:site" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_site }}" />
+<meta name="twitter:creator" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_creator }}" />
+{{ end }}
+
+{{ define "main" }}
+
+
+<div class="container pt-6 pb-md-12">
+  <div class="row">
+  <h1>{{ humanize .Title }} articles</h1>
+
+  </div>
+  <div class="row">
+
+    {{ range .Pages.ByWeight }}
+      {{ partial "teaser.html" (dict "context" . "pages" .Pages)  }}
+    {{ end }}
+  </div>
+</div>
+
+
+
+{{ end }}

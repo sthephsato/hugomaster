@@ -1,0 +1,163 @@
+// Bootstrap
+@import 'bootstrap-variables';
+@import 'bootstrap/bootstrap-grid';
+@import 'variables';
+@import 'bootstrap/mixins';
+@import "bootstrap/utilities/text";
+@import 'bootstrap/card';
+@import 'bootstrap/utilities/sizing';
+@import 'bootstrap/forms';
+@import 'bootstrap/buttons';
+// Libraries
+@import 'libraries/hamburgers/hamburgers';
+
+// Components
+@import 'components/reset';
+@import 'components/type';
+@import 'components/page';
+@import 'components/header';
+@import 'components/footer';
+@import 'components/sub-footer';
+@import 'components/logo';
+@import 'components/main-menu';
+@import 'components/main-menu-mobile';
+@import 'components/hamburger';
+@import 'components/buttons';
+@import 'components/call';
+@import 'components/title';
+@import 'components/content';
+@import 'components/intro';
+@import 'components/intro-image';
+@import 'components/strip';
+@import 'components/whitebox';
+@import 'components/feature';
+@import 'components/tags';
+
+// Pages
+@import 'pages/home';
+
+body {
+  font-size: 16px;
+  line-height: 1.1;
+  font-family: $font-family-base;
+  @include media-breakpoint-up(md) {
+    font-size: 17px;
+    line-height: 1.2;
+  }
+}
+
+// Display breakpoints for DEV
+{{ if .Site.IsServer }}
+body:after {
+  color: #000000;
+  font-size: 12px;
+  padding: 5px;
+  font-weight: bold;
+  right: 10px;
+  position: fixed;
+  text-align: center;
+  text-transform: uppercase;
+  bottom: 10px;
+  width: 200px;
+  z-index: 9999;
+  border: solid 1px #000000;
+  @each $name, $value in $grid-breakpoints {
+    @include media-breakpoint-up($name) {
+      content: '#{$name} - min-width: #{$value}';
+    }
+  }
+}
+{{ end }}
+
+.mb-30px {
+    margin-bottom: 30px;
+}
+
+.card a{
+  text-decoration: none;
+}
+
+.card .post-read-more a{
+  float:right;
+}
+
+.breaking-news-header{
+  color:white;
+  background-color:#e30000;
+  text-transform:uppercase;
+  padding:5px 20px;
+  font-weight:bold;
+}
+
+.breaking-news-header-green{
+  color:white;
+  background-color:green;
+  text-transform:uppercase;
+  padding:5px 20px;
+  font-weight:bold;
+}
+
+
+.breaking-news-summary{
+  padding: 10px;
+  font-size: 80%;
+  border: 1px solid grey;
+  border-top: none;
+}
+
+strong{
+  font-weight:bolder;
+}
+
+#sidebar{
+  .card{
+    margin-bottom:15px;
+  }
+
+}
+
+#tag-cloud{
+  font-weight: 100;
+  margin-bottom:20px;
+  a{
+    margin:0px 5px;
+  }
+}
+
+/* Style all font awesome icons */
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+a.menu_icons{
+  display: inline-block;
+  font-weight: regular;
+  padding: 10px !important;
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+  color: white !important;
+}

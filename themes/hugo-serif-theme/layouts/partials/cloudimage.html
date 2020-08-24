@@ -1,0 +1,23 @@
+{{ $vcl := "https://res.cloudinary.com/dhfeecxpb/image/upload" }}
+{{$scratch := newScratch}}
+
+{{ if .Type }} <!--  THIS IS THE CODE TO SET VARIABLES FOR PARTIAL-->
+  {{ $path := .Url | strings.TrimLeft $vcl }}
+  {{ .context.Scratch.Set "type" .Type }}
+  {{ .context.Scratch.Set "path" $path }}
+{{else}} <!-- THIS IS THE CODE TO SET VARIABLES FOR SHORTCODE -->
+  {{ $path := .Get "url" | strings.TrimLeft $vcl }}
+  {{ .context.Scratch.Set "type" .Type }}
+  {{ .context.Scratch.Set "path" $path }}
+{{end}}
+
+{{ if eq (.context.Scratch.Get "type") "scroll"}}
+
+{{ else }}
+{{$path := .context.Scratch.Get "path" }}
+<div class="cld-image">
+  <a href="{{ $vcl }}/{{ $path }}">
+      <img style= "" data-src="{{ $vcl }}/c_scale,w_auto/{{ $path }}" class="cld-responsive">
+  </a>
+</div>
+{{end}}

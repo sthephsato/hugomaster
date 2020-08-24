@@ -1,0 +1,98 @@
+{{ $baseUrl := .Site.BaseURL }}
+{{ $location := .Site.Params.primarylocation }}
+<script type="application/ld+json">
+[
+	{
+		"@context": "http://schema.org",
+		"@type": "Webpage",
+		"specialty": "{{ .Site.Params.description }}",
+		"mainContentOfPage": {
+			"@context": "http://schema.org/",
+			"@type": "WebPageElement",
+			"cssSelector": ".body-content"
+		},
+		"primaryImageOfPage": "{{ .Site.Params.imageurl | absURL }}"
+	},
+	{
+		"@context": "http://schema.org",
+		"@type": "WebSite",
+		"@id": "{{ .Site.BaseURL }}",
+		"additionalType": ["CreativeWork", "Person"],
+		"url": "{{ .Site.BaseURL }}",
+		"name": "{{ .Site.Title }}",
+		"alternateName": "{{ .Site.Title }}",
+		"headline": "{{ .Site.Params.description }}",
+		"image": "{{ .Site.Params.imageurl | absURL }}",
+		"inLanguage": "{{ .Site.LanguageCode }}",
+		"author": "{{ .Site.Params.author }}",
+		"description": "{{ .Site.Params.description }}",
+		"disambiguatingDescription": "{{ .Site.Params.description }}",
+		"isFamilyFriendly": "http://schema.org/True",
+		"contentRating": "NR",
+		"sourceOrganization": "{{ .Site.Title }}",
+		"publisher": {
+		  "@type": "Organization",
+		  "name": "{{ .Site.Title }}",
+		  "logo": {
+		    "@type": "ImageObject",
+		    "url": "{{ .Site.Params.logourl | absURL }}",
+		    "height": 60,
+		    "width": 107
+		  }
+		},
+		"potentialAction": {
+			"@type": "SearchAction",
+			"target": "{{ .Site.BaseURL }}/search/query={search_term}",
+			"query-input": "required name=search_term"
+		},
+		"keywords":[
+			{{ range $i, $e := .Site.Params.schemakeywords }}{{ if $i }}, {{ end }}"{{ $e }}"{{ end }}
+		],
+		"hasPart": [
+			{
+				"@context": "http://schema.org/",
+				"@type": "WPHeader",
+				"@id": "#header",
+				"headline": "{{ .Site.Params.description }}",
+				"cssSelector": "#header",
+				"potentialAction": [{{ range $i, $e := .Site.Menus.actions }}{{ if $i }}, {{ end }}
+					{
+						"@type": "Action",
+						"name": "{{ $e.Title }}",
+						"target": "{{ $e.URL | absURL }}"
+					}
+					{{- end -}}
+				],
+				"@graph":
+				[{{ range $i, $e := .Site.Menus.main }}{{ if $i }}, {{ end }}
+					{
+						"@context": "https://schema.org",
+						"@type":"SiteNavigationElement",
+						"@id":"#header",
+						"name": "{{ $e.Title }}",
+						"url": "{{ $e.URL | absURL }}"
+					}
+					{{- end -}}
+				]
+			},
+			{
+				"@context": "http://schema.org/",
+				"@type": "WPSidebar",
+				"cssSelector": "#sidebar",
+				"citation": [
+				{{ range $i, $e := .Site.Menus.main }}{{ if $i }}, {{ end }}"{{ $e.URL | absURL }}"{{ end }}
+				]
+			},
+			{
+				"@context": "http://schema.org/",
+				"@type": "WPFooter",
+				"cssSelector": ".footer",
+				"@id": "#footer",
+				"copyrightHolder":"{{ .Site.Title }}",
+				"publisher": "{{ .Site.Title }}",
+				"copyrightYear":"{{ now.Format "2006"}}"
+			}
+		]
+	}
+]
+</script>

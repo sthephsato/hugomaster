@@ -1,0 +1,12 @@
+{{ if eq (.Get "type") "scroll"}}
+
+
+{{ else }}
+  <div class="cld-image">
+      {{ $vcl := "https://res.cloudinary.com/dhfeecxpb/image/upload" }}
+      {{ $path := .Get "url" | strings.TrimLeft $vcl }}
+      <a href="{{ $vcl }}/{{ $path }}">
+          <img data-src="{{ $vcl }}/c_scale,w_auto/{{ $path }}" class="cld-responsive">
+      </a>
+  </div>
+{{end}}

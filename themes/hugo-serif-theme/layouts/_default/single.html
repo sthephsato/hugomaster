@@ -1,0 +1,22 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-default-single{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "main" }}
+<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-11">
+      <div class="service service-single">
+        <h1 class="title">{{.Title}}</h1>
+        {{ partial "tags.html" .}}
+        <br/>
+        <div class="content">{{.Content}}</div>
+        <!-- layouts/partials/tags.html -->
+        {{ partial "tags.html" .}}
+        <br />
+        {{ partial "related.html" .}}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

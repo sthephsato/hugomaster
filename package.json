@@ -1,0 +1,29 @@
+{
+  "name": "hugo-boilerplate",
+  "version": "0.0.2",
+  "description": "Build Script",
+  "scripts": {
+    "build": "hugo",
+    "build:dev": "hugo -D",
+    "server": "hugo server -w -D",
+    "index": "hugo-algolia",
+    "index-and-send": "hugo-algolia -s",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "algolia": "atomic-algolia"
+  },
+  "keywords": [
+    "hugo",
+    "boilerplate",
+    "hyde-y"
+  ],
+  "author": "Steven Enten <steven@enten.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enten/hugo-boilerplate/issues"
+  },
+  "homepage": "https://github.com/enten/hugo-boilerplate#readme",
+  "dependencies": {
+    "atomic-algolia": "^0.3.17",
+    "hugo-algolia": "^1.2.14"
+  }
+}

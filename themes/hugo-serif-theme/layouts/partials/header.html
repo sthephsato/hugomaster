@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    /** This section is only needed once per page if manually copying **/
+    if (typeof MauticSDKLoaded == 'undefined') {
+        var MauticSDKLoaded = true;
+        var head            = document.getElementsByTagName('head')[0];
+        var script          = document.createElement('script');
+        script.type         = 'text/javascript';
+        script.src          = 'https://social.micrositehub.com/media/js/mautic-form.js';
+        script.onload       = function() {
+            MauticSDK.onLoad();
+        };
+        head.appendChild(script);
+        var MauticDomain = 'https://social.micrositehub.com';
+        var MauticLang   = {
+            'submittingMessage': "Please wait..."
+        }
+    }
+</script>
+
+<div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="{{ .Site.BaseURL }}"><img alt="{{ .Site.Params.logo.alt }}" src="{{ .Site.Params.logo.standard | relURL }}" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="{{ .Site.BaseURL }}"><img alt="{{ .Site.Params.logo.alt }}" src="{{ .Site.Params.logo.mobile | relURL }}" /></a>
+    </div>
+    {{ partial "main-menu.html" . }}
+
+    {{ partial "hamburger.html" . }}
+  </div>
+
+</div>
+
+  {{ if .Params.breaking_news }}
+    {{ partial "breaking-news.html" . }}
+  {{ end }}

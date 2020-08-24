@@ -1,0 +1,86 @@
+baseURL = "https://www.guidetomachupicchu.com/"
+languageCode = "en-us"
+title = "Your Guide to Machu Picchu"
+themesDir = "themes"
+theme = "hugo-serif-theme"
+enableRobotsTXT = true
+disqusShortname = "guide-to-machu-picchu"
+breaking_news = false
+facebook = "https://www.facebook.com/howtotraveltomachupicchu/"
+#{{ partial "schemas/schema_Global.html" . }}
+[params]
+  # In most cases you will only want to use either one of these. If you have Google Analytics included in your GTM tags don't put your GA ID here. Otherwise your data might be useless.
+  google_analytics_id = "UA-25650309-5"
+  google_tag_manager_id = ""
+  color =  "#000000"
+  name = "Guide to Machu Picchu" # your company name
+  #contact = "hello@yourname.com" # Primary email address
+  #phone = "0123345678" # Primary phone
+  copyright = "© 2018 YourName. All rights reserved."
+  description = "Your ultimate guide to Machu Picchu, how to get there, from hiking to trains, tickets to get in and great food and services." # Add a short description
+  primarylocation = "US" # Used as primary location if no specific is set
+  primaryauthor = "MAPI Expert" # Used as primary author if no specific is set
+  imageurl = "/images/map_htttmp.png"
+  schemakeywords = ["Machu Picchu Information", "Machu Picchu Tickets", "Machu Picchu Weather", "Machu Picchu Trains", "Huayna Picchu"]
+
+  [params.logo]
+    mobile = "images/logo-mobile.png"
+    standard  = "images/logo.png?2020"
+    alt = "Your Guide to Machu Picchu"
+
+  [params.homepage_meta_tags]
+    meta_description = "Your ultimate guide to Machu Picchu, how to get there, from hiking to trains, tickets to get in and great food and services."
+    meta_og_title = "Your Guide to Machu Picchu"
+    meta_og_type = "website"
+    meta_og_url = "https://guidetomachupicchu.com"
+    meta_og_image = "https://guidetomachupicchu.com/images/logo.png"
+    meta_og_description = "Your ultimate guide to Machu Picchu, how to get there, from hiking to trains, tickets to get in and great food and services."
+    meta_twitter_card = "Your ultimate guide to Machu Picchu, how to get there, from hiking to trains, tickets to get in and great food and services."
+    meta_twitter_site = "@satotravels"
+    meta_twitter_creator = "@satotravels"
+
+[menu]
+  # Main Menu
+  [[menu.main]]
+      name = "Getting There"
+      url = "/blogs/2019-12-29-how-to-travel-to-machu-picchu/"
+      weight = 1
+
+  [[menu.main]]
+      name = "Tips & Information"
+      url = "/blogs/2020-01-09-traveling-to-machu-picchu-10-practical-tips-for-visitors/"
+      weight = 2
+
+  [[menu.main]]
+      name = "Hiking"
+      url = "/blogs/2019-12-30-hiking-to-machu-picchu/"
+      weight = 3
+
+  # Footer Menu
+  [[menu.footer]]
+    name = "Trains"
+    url = "/tags/trains"
+      weight = 1
+
+  [[menu.footer]]
+    name = "Buses"
+    url = "/tags/buses"
+      weight = 1
+
+  [[menu.footer]]
+    name = "Contact Us"
+    url = "/contact/"
+      weight = 2
+
+[outputs]
+  home = ["HTML", "RSS", "Algolia"]
+
+[outputFormats.Algolia]
+  baseName = "algolia"
+  isPlainText = true
+  mediaType = "application/json"
+  notAlternative = true
+
+[params.algolia]
+  vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+  params = ["tags"]
